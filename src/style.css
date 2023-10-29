@@ -22,8 +22,9 @@
     --clr-danger-100: hsl(0, 91%, 43%);
 
     --bxsh-100: 0px 6px 24px 0px hsl(0, 0%, 0%, 0.04);
-    --bxsh-200: 0px 6px 20px -6px hsl(0, 0%, 0%, 0.51);
+    --bxsh-200: 0px 6px 20px -6px hsl(0, 0%, 0%, 0.41);
     --bd-100: 1px solid hsl(0, 0%, 0%, 0.08);
+    --bd-200: 4px solid hsl(0, 0%, 0%, 0.08);
 
     --ff-100: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, 'Segoe UI',
         Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
@@ -32,19 +33,11 @@
     --ff-mono: 'Cascadia Mono', 'Cascadia Code', 'Fira Code', 'Consolas',
         monospace;
 
-    --fz-25: 0.75rem;
-    --fz-50: 0.875rem;
     --fz-100: 1rem;
     --fz-200: 1.125rem;
-    --fz-300: 1.25rem;
-    --fz-400: 1.5rem;
-    --fz-500: 1.875rem;
-    --fz-600: 2.25rem;
-    --fz-700: 3rem;
-    --fz-800: 3.75rem;
-    --fz-900: 4.5rem;
-    --fz-950: 6rem;
-    --fz-1000: 8rem;
+    --fz-300: 1.5rem;
+    --fz-400: 2.25rem;
+    --fz-500: 3rem;
 }
 
 *,
@@ -72,7 +65,7 @@ body {
 .title {
     width: fit-content;
     margin: 0 auto;
-    font-size: var(--fz-700);
+    font-size: var(--fz-500);
     text-align: center;
 
     /* text gradient */
@@ -98,17 +91,15 @@ main {
 .main-content {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     gap: 1rem;
 }
 
 .label-round {
-    font-size: var(--fz-600);
-
     background: linear-gradient(var(--clr-primary-300), var(--clr-primary-500));
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    font-size: var(--fz-400);
 }
 
 .choices {
@@ -128,11 +119,13 @@ main {
     color: var(--clr-neutral-100);
     box-shadow: var(--bxsh-100);
     width: fit-content;
-    padding: 0.625rem 1.25rem;
     border: none;
     border-radius: 8px;
+    padding: 0.625rem 1.25rem;
     font-family: var(--ff-mono);
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 
     transition: background-position 400ms;
 }
@@ -147,14 +140,21 @@ main {
     background-position: bottom center;
 }
 
+.btn-choice.btn-correct {
+    outline: 4px solid var(--clr-primary-400);
+    outline-offset: 2px;
+}
+
 .color {
-    background-color: greenyellow;
-    box-shadow: var(--bxsh-100);
-    /* not sure why but clamp here works perfectly, event though it's not hitting 15rem at a smaller screen size */
+    box-shadow: var(--bxsh-100), var(--bxsh-200);
+    /* not sure why but clamp is working perfectly here, even though
+    it's not hitting 15rem at a smaller screen size */
     width: clamp(15rem, 100%, 24rem);
     aspect-ratio: 4 / 3;
-    border: var(--bd-100);
+    border: var(--bd-200);
     border-radius: 16px;
+
+    transition: background-color 400ms;
 }
 
 .info {
@@ -169,6 +169,7 @@ main {
 }
 
 .message {
+    font-size: var(--fz-200);
     font-weight: 700;
     transition: color 200ms;
 }
@@ -181,13 +182,61 @@ main {
     color: var(--clr-danger-100);
 }
 
-.score {
-    font-weight: 700;
+.label-score {
+    font-size: var(--fz-200);
+}
 
+.score {
     background: linear-gradient(var(--clr-primary-200), var(--clr-primary-500));
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    font-weight: 700;
+}
+
+.attribution {
+    margin-top: 2rem;
+    font-size: var(--fz-100);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.attribution-link {
+    color: var(--clr-primary-200);
+    font-weight: 700;
+    text-decoration: none;
+
+    position: relative;
+    transition: color 200ms;
+}
+
+/* Cool link hover effect I created that I like using.
+If turned off, make sure to set a background-color to the link on hover,
+or change its color on hover from white */
+
+.attribution-link:hover,
+.attribution-link:focus-visible {
+    color: var(--clr-neutral-100);
+}
+
+.attribution-link::after {
+    background-color: var(--clr-primary-100);
+    width: 113%;
+
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -6%;
+    z-index: -1;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms, background-color 600ms;
+}
+
+.attribution-link:hover::after {
+    background-color: var(--clr-primary-200);
+    transform: scaleX(1);
 }
 
 @media screen and (width < 750px) {
@@ -196,10 +245,11 @@ main {
     }
 
     .title {
-        font-size: var(--fz-600);
+        font-size: var(--fz-400);
     }
 
     main {
+        align-items: center;
         gap: 1rem;
         margin-top: 2rem;
     }
@@ -209,7 +259,7 @@ main {
     }
 
     .label-round {
-        font-size: var(--fz-400);
+        font-size: var(--fz-300);
         text-align: center;
     }
 
