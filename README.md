@@ -3,6 +3,7 @@
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Preview](#preview)
+- [Live Site](#live-site)
 - [Flow](#flow)
 - [Diary](#diary)
 
@@ -13,6 +14,10 @@ Simple app which displays a color on the screen, and the player has to guess the
 ## Preview
 
 ![site preview](./assets/site-preview.png)
+
+## Live Site
+
+[Guess The Color](https://ragonscreen.github.io/basic-guess-the-color/)
 
 ## Flow
 
