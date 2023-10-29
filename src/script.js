@@ -46,7 +46,6 @@ const generateRound = () => {
         }
     });
 
-    console.log(answerCorrect);
     btnCorrect = answerCorrect;
     makeBtnsInteractive();
 };
