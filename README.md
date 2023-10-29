@@ -13,6 +13,7 @@ Simple app which displays a color on the screen, and the player has to guess the
 ## Preview
 
 [Live Site:](https://ragonscreen.github.io/basic-guess-the-color/)
+
 ![site preview](./assets/site-preview.png)
 
 ## Flow
