@@ -1,15 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Press+Start+2P&display=swap');
 
 :root {
-    --clr-neutral-100: ;
-    --clr-neutral-200: ;
+    --clr-neutral-50: hsl(0, 0%, 98%);
+    --clr-neutral-100: hsl(240, 5%, 96%);
+    --clr-neutral-200: hsl(240, 6%, 90%);
+    --clr-neutral-300: hsl(240, 5%, 84%);
+    --clr-neutral-400: hsl(240, 5%, 65%);
+    --clr-neutral-500: hsl(240, 4%, 46%);
+    --clr-neutral-600: hsl(240, 5%, 34%);
+    --clr-neutral-700: hsl(240, 5%, 26%);
+    --clr-neutral-800: hsl(240, 4%, 16%);
+    --clr-neutral-900: hsl(240, 6%, 10%);
+    --clr-neutral-950: hsl(240, 10%, 4%);
 
-    --clr-primary: ;
-    --clr-accent: ;
+    --clr-primary-100: hsl(209, 100%, 55%);
+    --clr-primary-200: hsl(212, 100%, 47%);
+    --clr-primary-300: hsl(215, 100%, 41%);
+    --clr-primary-400: hsl(218, 100%, 35%);
+    --clr-primary-500: hsl(221, 100%, 26%);
+
+    --clr-danger-100: hsl(0, 91%, 43%);
+
+    --bxsh-100: 0px 6px 24px 0px hsl(0, 0%, 0%, 0.04);
+    --bxsh-200: 0px 6px 20px -6px hsl(0, 0%, 0%, 0.51);
+    --bd-100: 1px solid hsl(0, 0%, 0%, 0.08);
 
     --ff-100: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, 'Segoe UI',
         Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
         sans-serif;
+
+    --ff-mono: 'Cascadia Mono', 'Cascadia Code', 'Fira Code', 'Consolas',
+        monospace;
+
+    --fz-25: 0.75rem;
+    --fz-50: 0.875rem;
+    --fz-100: 1rem;
+    --fz-200: 1.125rem;
+    --fz-300: 1.25rem;
+    --fz-400: 1.5rem;
+    --fz-500: 1.875rem;
+    --fz-600: 2.25rem;
+    --fz-700: 3rem;
+    --fz-800: 3.75rem;
+    --fz-900: 4.5rem;
+    --fz-950: 6rem;
+    --fz-1000: 8rem;
 }
 
 *,
@@ -20,8 +55,165 @@
     box-sizing: border-box;
 }
 
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
 body {
+    background-color: var(--clr-neutral-200);
+    color: var(--clr-neutral-800);
     min-height: 100vh;
     min-height: 100dvh;
+    padding: 2rem;
     font-family: var(--ff-100);
+}
+
+.title {
+    width: fit-content;
+    margin: 0 auto;
+    font-size: var(--fz-700);
+    text-align: center;
+
+    /* text gradient */
+    background: linear-gradient(var(--clr-primary-100), var(--clr-primary-400));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+
+    margin: 4rem auto 0;
+}
+
+.sunshine {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 1rem;
+}
+
+.label-round {
+    font-size: var(--fz-600);
+
+    background: linear-gradient(var(--clr-primary-300), var(--clr-primary-500));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-choice {
+    background: linear-gradient(
+        180deg,
+        var(--clr-primary-100),
+        var(--clr-primary-400)
+    );
+    background-size: 150% 150%;
+    background-position: top center;
+    color: var(--clr-neutral-100);
+    box-shadow: var(--bxsh-100);
+    width: fit-content;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--ff-mono);
+    font-weight: 500;
+
+    transition: background-position 400ms;
+}
+
+.btn-choice:hover {
+    background-position: bottom center;
+}
+
+.btn-choice:focus-visible {
+    outline: 4px solid var(--clr-neutral-800);
+    outline-offset: 2px;
+    background-position: bottom center;
+}
+
+.color {
+    background-color: greenyellow;
+    box-shadow: var(--bxsh-100);
+    /* not sure why but clamp here works perfectly, event though it's not hitting 15rem at a smaller screen size */
+    width: clamp(15rem, 100%, 24rem);
+    aspect-ratio: 4 / 3;
+    border: var(--bd-100);
+    border-radius: 16px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+
+    box-shadow: var(--bxsh-100);
+    margin: 2rem auto 0;
+    border: var(--bd-100);
+    border-radius: 16px;
+    padding: 1rem;
+}
+
+.message {
+    font-weight: 700;
+    transition: color 200ms;
+}
+
+.message.correct {
+    color: var(--clr-primary-200);
+}
+
+.message.incorrect {
+    color: var(--clr-danger-100);
+}
+
+.score {
+    font-weight: 700;
+
+    background: linear-gradient(var(--clr-primary-200), var(--clr-primary-500));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@media screen and (width < 750px) {
+    body {
+        padding: 2rem 1rem;
+    }
+
+    .title {
+        font-size: var(--fz-600);
+    }
+
+    main {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .main-content {
+        align-items: center;
+    }
+
+    .label-round {
+        font-size: var(--fz-400);
+        text-align: center;
+    }
+
+    .btn-choice {
+        padding: 0.5rem 1rem;
+    }
 }
