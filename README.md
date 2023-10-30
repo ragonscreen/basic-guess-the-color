@@ -1,11 +1,11 @@
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [Introduction](#introduction)
-- [Preview](#preview)
-- [Live Site](#live-site)
-- [Flow](#flow)
-- [Diary](#diary)
+-   [Table of Contents](#table-of-contents)
+-   [Introduction](#introduction)
+-   [Preview](#preview)
+-   [Live Site](#live-site)
+-   [Flow](#flow)
+-   [Diary](#diary)
 
 ## Introduction
 
@@ -39,3 +39,4 @@ Simple app which displays a color on the screen, and the player has to guess the
 -   23:36 - Kind of forgot to document the rest of the development process. Almost done with the JavaScript now. App is fully functional.
 -   00:15 - Tested the app for well over 100 rounds, and added comments in code.
 -   00:40 - Finishing touches, and added my favourite link hover effect that I use a lot.
+-   18:43 - Fixed a minor bug, where the layout was messed up in smaller screens during the round starting screen.
