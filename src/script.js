@@ -2,7 +2,7 @@
 
 const colorBox = document.querySelector('.color');
 const btnsChoice = document.querySelectorAll('.btn-choice');
-const roundElement = document.querySelector('.round');
+const labelRoundElement = document.querySelector('.label-round');
 const scoreElement = document.querySelector('.score');
 const messageElement = document.querySelector('.message');
 
@@ -65,13 +65,13 @@ const startNextRound = () => {
     });
 
     scoreElement.textContent = currentScore;
-    roundElement.textContent = 'starting...';
+    labelRoundElement.textContent = 'Starting...';
 
     currentRound += 1;
     setTimeout(() => {
         btnCorrect.classList.remove('btn-correct');
         generateRound();
-        roundElement.textContent = currentRound;
+        labelRoundElement.textContent = `Round ${currentRound}`;
         displayMessage('Choose an option...');
         btnsChoice.forEach((btn) => {
             btn.disabled = false;
